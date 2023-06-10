@@ -19,5 +19,12 @@ export const SignInButton = () => {
 
 // Sign out button
 export const SignOutButton = () => {
-  return <button onClick={() => auth.signOut()}>Sign Out</button>;
+  return (
+    <button
+      className="p-4 rounded-lg flex justify-center items-center font-semibold gap-2 text-xl text-black bg-white shadow-sm"
+      onClick={() => auth.signOut()}
+    >
+      Sign Out
+    </button>
+  );
 };
