@@ -1,5 +1,5 @@
 "use client";
-import { auth, googleAuthProvider } from "@/lib/firebase";
+import { auth, googleAuthProvider, firestore } from "@/lib/firebase";
 
 // Sign in button
 export const SignInButton = () => {
@@ -25,6 +25,27 @@ export const SignOutButton = () => {
       onClick={() => auth.signOut()}
     >
       Sign Out
+    </button>
+  );
+};
+
+export const CreateDocButton = () => {
+  return (
+    <button
+      onClick={() => {
+        // create new doc with firestore
+        firestore
+          .collection("users")
+          .doc(auth.currentUser?.uid)
+          .collection("docs")
+          .add({
+            title: "new untitled document",
+            content: "",
+          });
+      }}
+      className="bg-white border-2 flex justify-center items-center rounded-lg p-4 border-gray-600 hover:shadow-sm"
+    >
+      <span className="text-6xl text-blue-600">+</span>Create a new doc
     </button>
   );
 };

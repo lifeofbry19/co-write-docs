@@ -39,3 +39,9 @@ export const firestore = firebase.firestore();
 export const storage = firebase.storage();
 export const firebaseAppInstance = firebaseApp;
 export const database = getDatabase(firebaseAppInstance);
+export function postToJSON(doc: any) {
+  const data = doc.data();
+  return {
+    ...data,
+  };
+}
